@@ -108,8 +108,7 @@ Pub quizzes, solving problems, and fixing things around the house.
 <i data-lucide="compass"></i>
 <h3>Self Taught Problem Solver</h3>
 <p>
-Although I did not originally come from IT, I developed strong technical skills
-through continuous learning.
+Although I did not originally come from IT, I developed strong technical skills through continuous learning.
 </p>
 </div>
 
@@ -131,50 +130,60 @@ Serbian, English, and currently learning German.
 
 <h2>Selected Work</h2>
 
-<div class="workGroup">
-<h3 class="groupTitle">Professional Experience</h3>
+<div class="work_group">
+<h3 class="group_title">Professional Experience</h3>
 
-<div class="experienceOuter">
-<div class="experienceViewport">
-<div class="cardsSlider" id="experienceSlider">
+<div class="slider_shell">
+<button class="arrow_button subtle_arrow" id="left_arrow" aria-label="Previous experience">&#10094;</button>
 
+<div class="slider_viewport">
+<div class="experience_track" id="experience_track">
+
+<div class="experience_item">
 <div class="card">
 <h3>Operational Excellence</h3>
 <p>
 Supporting process improvement and operational efficiency.
 </p>
 </div>
+</div>
 
+<div class="experience_item">
 <div class="card">
 <h3>IT Engineer</h3>
 <p>
 Technical support, systems work, and digital solutions.
 </p>
 </div>
+</div>
 
+<div class="experience_item">
 <div class="card">
 <h3>GIS Analyst</h3>
 <p>
 Spatial data analysis, mapping workflows, and GIS tools.
 </p>
 </div>
+</div>
 
+<div class="experience_item">
 <div class="card">
 <h3>Lidar Analyst</h3>
 <p>
 Processing LiDAR datasets, point cloud analysis, and spatial interpretation.
 </p>
 </div>
-
-</div>
 </div>
 
-<button class="arrow right" onclick="scrollRight()">&#10095;</button>
 </div>
 </div>
 
-<div class="workGroup">
-<h3 class="groupTitle">Freelance Work</h3>
+<button class="arrow_button subtle_arrow" id="right_arrow" aria-label="Next experience">&#10095;</button>
+</div>
+</div>
+
+<div class="work_group">
+<h3 class="group_title">Freelance Work</h3>
 
 <div class="cards">
 
@@ -189,8 +198,7 @@ Creation of a zoning plan using spatial data analysis in QGIS.
 <div class="card">
 <h3>LiDAR Data Processing</h3>
 <p>
-Processing and analysis of LiDAR data and point clouds for spatial interpretation
-and mapping workflows.
+Processing and analysis of LiDAR data and point clouds for spatial interpretation and mapping workflows.
 </p>
 <a href="https://github.com/mimicgoran/lidar-data-processing" class="button">View Project</a>
 </div>
@@ -233,7 +241,7 @@ and mapping workflows.
 
 <h2>Contact</h2>
 
-<p>Email: your-email@example.com</p>
+<p>Email: your_email@example.com</p>
 <p>GitHub: https://github.com/mimicgoran</p>
 
 </div>
@@ -248,30 +256,59 @@ and mapping workflows.
 <script>
 lucide.createIcons();
 
-const slider = document.getElementById("experienceSlider");
+const track = document.getElementById("experience_track");
+const leftArrow = document.getElementById("left_arrow");
+const rightArrow = document.getElementById("right_arrow");
+
 let currentIndex = 0;
 
-function getCardStep() {
-    const firstCard = slider.querySelector(".card");
-    if (!firstCard) return 0;
-    const style = window.getComputedStyle(slider);
-    const gap = parseInt(style.columnGap || style.gap || 20, 10);
-    return firstCard.offsetWidth + gap;
+function getVisibleCount() {
+    return window.innerWidth <= 768 ? 1 : 3;
 }
 
-function scrollRight() {
-    const cards = slider.querySelectorAll(".card");
-    const visibleCards = window.innerWidth <= 768 ? 1 : 3;
-    const maxIndex = cards.length - visibleCards;
+function getMaxIndex() {
+    const totalItems = track.children.length;
+    return Math.max(0, totalItems - getVisibleCount());
+}
 
-    if (currentIndex < maxIndex) {
+function updateSlider() {
+    const firstItem = track.querySelector(".experience_item");
+    if (!firstItem) return;
+
+    const itemWidth = firstItem.getBoundingClientRect().width;
+    const trackStyle = window.getComputedStyle(track);
+    const gapValue = parseFloat(trackStyle.gap) || 0;
+    const offset = currentIndex * (itemWidth + gapValue);
+
+    track.style.transform = `translateX(${offset * -1}px)`;
+
+    leftArrow.disabled = currentIndex === 0;
+    rightArrow.disabled = currentIndex >= getMaxIndex();
+}
+
+rightArrow.addEventListener("click", function () {
+    if (currentIndex < getMaxIndex()) {
         currentIndex += 1;
-        slider.style.transform = `translateX(-${currentIndex * getCardStep()}px)`;
-    } else {
-        currentIndex = 0;
-        slider.style.transform = "translateX(0px)";
+        updateSlider();
     }
-}
+});
+
+leftArrow.addEventListener("click", function () {
+    if (currentIndex > 0) {
+        currentIndex -= 1;
+        updateSlider();
+    }
+});
+
+window.addEventListener("resize", function () {
+    const maxIndex = getMaxIndex();
+    if (currentIndex > maxIndex) {
+        currentIndex = maxIndex;
+    }
+    updateSlider();
+});
+
+window.addEventListener("load", updateSlider);
 </script>
 
 </body>
