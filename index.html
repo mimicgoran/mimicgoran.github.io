@@ -117,55 +117,119 @@ data analysis, and practical technical solutions.
 <h3 class="groupTitle">Professional Experience</h3>
 
 <div class="sliderWrapper">
-
-<button class="arrow" id="leftBtn">&#10094;</button>
+<button class="arrow" id="professionalLeftBtn" aria-label="Previous professional experience">&#10094;</button>
 
 <div class="sliderViewport">
+<div class="sliderTrack" id="professionalTrack">
 
-<div class="sliderTrack" id="sliderTrack">
-
-<div class="card">
-<h3>Operational Excellence</h3>
-<p>Supporting process improvement and operational efficiency.</p>
-</div>
-
+<div class="slideItem">
 <div class="card">
 <h3>IT Engineer</h3>
-<p>Technical support, systems work and digital solutions.</p>
+<p>
+Managing and maintaining high quality geospatial datasets to ensure accuracy and reliability. Streamlining data workflows and introducing automation to improve efficiency and reduce manual work. Developing analytical reports that support strategic decisions and help monitor project outcomes. Collaborating closely with legal, sales, and marketing teams by providing data insights and operational support.
+</p>
+</div>
 </div>
 
+<div class="slideItem">
+<div class="card">
+<h3>Operational Excellence</h3>
+<p>
+Creating and maintaining clear technical and process documentation. Evaluating existing workflows and redesigning processes to make operations more efficient and scalable. Coordinating with cross functional teams to support smooth implementation of new processes and improvements. Translating stakeholder needs into practical and effective solutions.
+</p>
+</div>
+</div>
+
+<div class="slideItem">
 <div class="card">
 <h3>GIS Analyst</h3>
-<p>Spatial data analysis, mapping workflows and GIS tools.</p>
+<p>
+Managing and validating street level datasets to keep routing information accurate and up to date. Maintaining and enriching the POI database to ensure reliable and current business and public location information. Enhancing map functionality by expanding place categories, improving pedestrian navigation, and integrating additional spatial datasets such as postal address codes to strengthen overall data coverage and usability.
+</p>
+</div>
 </div>
 
+<div class="slideItem">
 <div class="card">
 <h3>Lidar Analyst</h3>
-<p>Processing LiDAR datasets and point cloud analysis.</p>
+<p>
+Collaborating on large scale powerline and gasline routing projects for major infrastructure companies. Processing and classifying LiDAR datasets to generate digital terrain models and analyze landscape and vegetation patterns for environmental and infrastructure planning. Producing situational and profile plans to support route design, technical analysis, and project development.
+</p>
+</div>
 </div>
 
 </div>
-
 </div>
 
-<button class="arrow" id="rightBtn">&#10095;</button>
-
+<button class="arrow" id="professionalRightBtn" aria-label="Next professional experience">&#10095;</button>
 </div>
 
 <h3 class="groupTitle">Freelance Work</h3>
 
-<div class="cards">
+<div class="sliderWrapper">
+<button class="arrow" id="freelanceLeftBtn" aria-label="Previous freelance work">&#10094;</button>
 
+<div class="sliderViewport">
+<div class="sliderTrack" id="freelanceTrack">
+
+<div class="slideItem">
 <div class="card">
-<h3>GIS Zoning Plan</h3>
-<p>Creation of zoning plans using spatial data analysis in QGIS.</p>
+<h3>Plugin Development and Process Automation</h3>
+<p>
+During the project, it became clear that a significant amount of time was being lost on repetitive tasks. To address this, I contributed to the development of Python plugins for GIS and helped automate workflows using FME and Power Automate.
+</p>
+</div>
 </div>
 
+<div class="slideItem">
+<div class="card">
+<h3>Utility Extraction from BIM</h3>
+<p>
+Data related to the energy infrastructure was first extracted from BIM, after which the attributes were organized and the topological relationships were structured. A particular challenge was resolving and organizing topology within a 3D environment.
+</p>
+</div>
+</div>
+
+<div class="slideItem">
 <div class="card">
 <h3>LiDAR Data Processing</h3>
-<p>Processing LiDAR point cloud datasets and spatial interpretation.</p>
+<p>
+Participation in the Paraćin Zaječar Negotin road construction project. The work involved topographic surveying and the creation of longitudinal and cross sections based on LiDAR data.
+</p>
+</div>
 </div>
 
+<div class="slideItem">
+<div class="card">
+<h3>Transformation of CAD Data into GIS</h3>
+<p>
+For a project in Qatar, data obtained from LiDAR, field surveys, and the existing utility cadastre was migrated into standardized GIS databases.
+</p>
+</div>
+</div>
+
+<div class="slideItem">
+<div class="card">
+<h3>GIS Zoning Plan</h3>
+<p>
+Creation of zoning plans based on datasets provided by local government units. Supported local administrations in developing digital zoning plans through data migration, harmonization, and processing.
+</p>
+</div>
+</div>
+
+<div class="slideItem">
+<div class="card">
+<h3>Preparation of Navigation Routes for the Mountaineering Association of Serbia</h3>
+<p>
+Based on multiple data sources, both vector data and accompanying attributes were standardized and organized. The processed data is published on their website and serves as a support tool for navigation.
+</p>
+</div>
+</div>
+
+</div>
+</div>
+
+<button class="arrow" id="freelanceRightBtn" aria-label="Next freelance work">&#10095;</button>
 </div>
 
 </div>
@@ -216,34 +280,62 @@ data analysis, and practical technical solutions.
 </footer>
 
 <script>
-
 lucide.createIcons();
 
-const track = document.getElementById("sliderTrack");
-const leftBtn = document.getElementById("leftBtn");
-const rightBtn = document.getElementById("rightBtn");
+function createSlider(trackId, leftBtnId, rightBtnId) {
+    const track = document.getElementById(trackId);
+    const leftBtn = document.getElementById(leftBtnId);
+    const rightBtn = document.getElementById(rightBtnId);
 
-let index = 0;
+    let index = 0;
 
-function getCardWidth(){
-return track.querySelector(".card").offsetWidth + 20;
+    function visibleItems() {
+        return window.innerWidth <= 768 ? 1 : 3;
+    }
+
+    function itemWidth() {
+        const firstItem = track.querySelector(".slideItem");
+        if (!firstItem) return 0;
+        const gap = 20;
+        return firstItem.offsetWidth + gap;
+    }
+
+    function maxIndex() {
+        return Math.max(0, track.children.length - visibleItems());
+    }
+
+    function update() {
+        track.style.transform = `translateX(-${index * itemWidth()}px)`;
+        leftBtn.disabled = index === 0;
+        rightBtn.disabled = index >= maxIndex();
+    }
+
+    rightBtn.addEventListener("click", function () {
+        if (index < maxIndex()) {
+            index += 1;
+            update();
+        }
+    });
+
+    leftBtn.addEventListener("click", function () {
+        if (index > 0) {
+            index -= 1;
+            update();
+        }
+    });
+
+    window.addEventListener("resize", function () {
+        if (index > maxIndex()) {
+            index = maxIndex();
+        }
+        update();
+    });
+
+    update();
 }
 
-rightBtn.onclick = () => {
-const maxIndex = track.children.length - 3;
-if(index < maxIndex){
-index++;
-track.style.transform = `translateX(-${index * getCardWidth()}px)`;
-}
-};
-
-leftBtn.onclick = () => {
-if(index > 0){
-index--;
-track.style.transform = `translateX(-${index * getCardWidth()}px)`;
-}
-};
-
+createSlider("professionalTrack", "professionalLeftBtn", "professionalRightBtn");
+createSlider("freelanceTrack", "freelanceLeftBtn", "freelanceRightBtn");
 </script>
 
 </body>
