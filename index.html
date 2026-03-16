@@ -59,65 +59,49 @@ data analysis, and practical technical solutions.
 <div class="card">
 <i data-lucide="workflow"></i>
 <h3>Process Improvement</h3>
-<p>
-Identifying inefficiencies and improving operational processes through structured analysis.
-</p>
+<p>Identifying inefficiencies and improving operational processes.</p>
 </div>
 
 <div class="card">
 <i data-lucide="users"></i>
 <h3>Operational and Project Support</h3>
-<p>
-Supporting legal, sales, and marketing teams through analysis and documentation.
-</p>
+<p>Supporting legal, sales, and marketing teams through analysis.</p>
 </div>
 
 <div class="card">
 <i data-lucide="bar-chart-3"></i>
 <h3>Data Analysis</h3>
-<p>
-Working with datasets, SQL queries, reporting, and analytical workflows.
-</p>
+<p>Working with datasets, SQL queries, reporting and analytics.</p>
 </div>
 
 <div class="card">
 <i data-lucide="globe-2"></i>
 <h3>Spatial Data and 3D Workflows</h3>
-<p>
-Experience with GIS, CAD formats, LiDAR datasets, and 3D spatial analysis.
-</p>
+<p>Experience with GIS, CAD formats, LiDAR datasets and 3D spatial data.</p>
 </div>
 
 <div class="card">
 <i data-lucide="rocket"></i>
 <h3>Motivation</h3>
-<p>
-I enjoy learning new skills and exploring new areas of knowledge.
-</p>
+<p>I enjoy learning new skills and exploring new areas of knowledge.</p>
 </div>
 
 <div class="card">
 <i data-lucide="puzzle"></i>
 <h3>Curiosity and Hobbies</h3>
-<p>
-Pub quizzes, solving problems, and fixing things around the house.
-</p>
+<p>Pub quizzes, solving problems and fixing things around the house.</p>
 </div>
 
 <div class="card">
 <i data-lucide="compass"></i>
 <h3>Self Taught Problem Solver</h3>
-<p>
-Although I did not originally come from IT, I developed strong technical skills through continuous learning.
-</p>
+<p>Technical skills developed through curiosity and continuous learning.</p>
 </div>
 
 <div class="card">
 <i data-lucide="languages"></i>
 <h3>Languages</h3>
-<p>
-Serbian, English, and currently learning German.
-</p>
+<p>Serbian, English and currently learning German.</p>
 </div>
 
 </div>
@@ -130,80 +114,58 @@ Serbian, English, and currently learning German.
 
 <h2>Selected Work</h2>
 
-<div class="work_group">
-<h3 class="group_title">Professional Experience</h3>
+<h3 class="groupTitle">Professional Experience</h3>
 
-<div class="slider_shell">
-<button class="arrow_button subtle_arrow" id="left_arrow" aria-label="Previous experience">&#10094;</button>
+<div class="sliderWrapper">
 
-<div class="slider_viewport">
-<div class="experience_track" id="experience_track">
+<button class="arrow" id="leftBtn">&#10094;</button>
 
-<div class="experience_item">
+<div class="sliderViewport">
+
+<div class="sliderTrack" id="sliderTrack">
+
 <div class="card">
 <h3>Operational Excellence</h3>
-<p>
-Supporting process improvement and operational efficiency.
-</p>
-</div>
+<p>Supporting process improvement and operational efficiency.</p>
 </div>
 
-<div class="experience_item">
 <div class="card">
 <h3>IT Engineer</h3>
-<p>
-Technical support, systems work, and digital solutions.
-</p>
-</div>
+<p>Technical support, systems work and digital solutions.</p>
 </div>
 
-<div class="experience_item">
 <div class="card">
 <h3>GIS Analyst</h3>
-<p>
-Spatial data analysis, mapping workflows, and GIS tools.
-</p>
-</div>
+<p>Spatial data analysis, mapping workflows and GIS tools.</p>
 </div>
 
-<div class="experience_item">
 <div class="card">
 <h3>Lidar Analyst</h3>
-<p>
-Processing LiDAR datasets, point cloud analysis, and spatial interpretation.
-</p>
-</div>
+<p>Processing LiDAR datasets and point cloud analysis.</p>
 </div>
 
 </div>
+
 </div>
 
-<button class="arrow_button subtle_arrow" id="right_arrow" aria-label="Next experience">&#10095;</button>
-</div>
+<button class="arrow" id="rightBtn">&#10095;</button>
+
 </div>
 
-<div class="work_group">
-<h3 class="group_title">Freelance Work</h3>
+<h3 class="groupTitle">Freelance Work</h3>
 
 <div class="cards">
 
 <div class="card">
 <h3>GIS Zoning Plan</h3>
-<p>
-Creation of a zoning plan using spatial data analysis in QGIS.
-</p>
-<a href="https://github.com/mimicgoran/zoning-plan-gis" class="button">View Project</a>
+<p>Creation of zoning plans using spatial data analysis in QGIS.</p>
 </div>
 
 <div class="card">
 <h3>LiDAR Data Processing</h3>
-<p>
-Processing and analysis of LiDAR data and point clouds for spatial interpretation and mapping workflows.
-</p>
-<a href="https://github.com/mimicgoran/lidar-data-processing" class="button">View Project</a>
+<p>Processing LiDAR point cloud datasets and spatial interpretation.</p>
 </div>
 
-</div>
 </div>
 
 </div>
@@ -218,7 +180,7 @@ Processing and analysis of LiDAR data and point clouds for spatial interpretatio
 
 <div class="card">
 <h3>Operations</h3>
-<p>Process improvement, workflow analysis, documentation, continuous improvement</p>
+<p>Process improvement and workflow analysis</p>
 </div>
 
 <div class="card">
@@ -228,7 +190,7 @@ Processing and analysis of LiDAR data and point clouds for spatial interpretatio
 
 <div class="card">
 <h3>Technical</h3>
-<p>Python, automation, digital workflows</p>
+<p>Python, automation and digital workflows</p>
 </div>
 
 </div>
@@ -254,61 +216,34 @@ Processing and analysis of LiDAR data and point clouds for spatial interpretatio
 </footer>
 
 <script>
+
 lucide.createIcons();
 
-const track = document.getElementById("experience_track");
-const leftArrow = document.getElementById("left_arrow");
-const rightArrow = document.getElementById("right_arrow");
+const track = document.getElementById("sliderTrack");
+const leftBtn = document.getElementById("leftBtn");
+const rightBtn = document.getElementById("rightBtn");
 
-let currentIndex = 0;
+let index = 0;
 
-function getVisibleCount() {
-    return window.innerWidth <= 768 ? 1 : 3;
+function getCardWidth(){
+return track.querySelector(".card").offsetWidth + 20;
 }
 
-function getMaxIndex() {
-    const totalItems = track.children.length;
-    return Math.max(0, totalItems - getVisibleCount());
+rightBtn.onclick = () => {
+const maxIndex = track.children.length - 3;
+if(index < maxIndex){
+index++;
+track.style.transform = `translateX(-${index * getCardWidth()}px)`;
 }
+};
 
-function updateSlider() {
-    const firstItem = track.querySelector(".experience_item");
-    if (!firstItem) return;
-
-    const itemWidth = firstItem.getBoundingClientRect().width;
-    const trackStyle = window.getComputedStyle(track);
-    const gapValue = parseFloat(trackStyle.gap) || 0;
-    const offset = currentIndex * (itemWidth + gapValue);
-
-    track.style.transform = `translateX(${offset * -1}px)`;
-
-    leftArrow.disabled = currentIndex === 0;
-    rightArrow.disabled = currentIndex >= getMaxIndex();
+leftBtn.onclick = () => {
+if(index > 0){
+index--;
+track.style.transform = `translateX(-${index * getCardWidth()}px)`;
 }
+};
 
-rightArrow.addEventListener("click", function () {
-    if (currentIndex < getMaxIndex()) {
-        currentIndex += 1;
-        updateSlider();
-    }
-});
-
-leftArrow.addEventListener("click", function () {
-    if (currentIndex > 0) {
-        currentIndex -= 1;
-        updateSlider();
-    }
-});
-
-window.addEventListener("resize", function () {
-    const maxIndex = getMaxIndex();
-    if (currentIndex > maxIndex) {
-        currentIndex = maxIndex;
-    }
-    updateSlider();
-});
-
-window.addEventListener("load", updateSlider);
 </script>
 
 </body>
