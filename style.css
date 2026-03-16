@@ -150,55 +150,67 @@ nav a:hover {
     color: #d6d6d6;
 }
 
-.workGroup {
+.work_group {
     margin-top: 50px;
 }
 
-.groupTitle {
+.group_title {
     color: #f2a678;
     margin-bottom: 20px;
     font-size: 24px;
 }
 
-.experienceOuter {
-    display: flex;
+.slider_shell {
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
 }
 
-.experienceViewport {
+.slider_viewport {
+    width: 100%;
     overflow: hidden;
-    flex: 1;
 }
 
-.cardsSlider {
+.experience_track {
     display: flex;
     gap: 20px;
     transition: transform 0.4s ease;
-    will-change: transform;
 }
 
-.cardsSlider .card {
+.experience_item {
     flex: 0 0 calc((100% - 40px) / 3);
-    min-width: calc((100% - 40px) / 3);
+    max-width: calc((100% - 40px) / 3);
 }
 
-.arrow {
-    background: #1a2c40;
+.experience_item .card {
+    height: 100%;
+}
+
+.arrow_button {
+    width: 36px;
+    height: 36px;
     border: none;
-    color: white;
-    font-size: 28px;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
+    border-radius: 999px;
     cursor: pointer;
-    flex-shrink: 0;
+    font-size: 18px;
+    line-height: 1;
     transition: 0.3s;
 }
 
-.arrow:hover {
-    background: #f2a678;
-    color: black;
+.subtle_arrow {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.subtle_arrow:hover:not(:disabled) {
+    background: rgba(242, 166, 120, 0.2);
+    color: #f2a678;
+}
+
+.arrow_button:disabled {
+    opacity: 0.25;
+    cursor: default;
 }
 
 footer {
@@ -235,18 +247,19 @@ footer p {
         font-size: 28px;
     }
 
-    .cardsSlider .card {
+    .slider_shell {
+        grid-template-columns: 36px 1fr 36px;
+        gap: 8px;
+    }
+
+    .experience_item {
         flex: 0 0 100%;
-        min-width: 100%;
+        max-width: 100%;
     }
 
-    .experienceOuter {
-        gap: 12px;
-    }
-
-    .arrow {
-        width: 42px;
-        height: 42px;
-        font-size: 24px;
+    .arrow_button {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
     }
 }
