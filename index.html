@@ -27,7 +27,7 @@
 <h2>Goran</h2>
 
 <ul>
-<li><a href="#capabilities">What I Do</a></li>
+<li><a href="#capabilities">What I bring to the table</a></li>
 <li><a href="#work">Experience</a></li>
 <li><a href="#skills">Skills</a></li>
 <li><a href="#contact">Contact</a></li>
@@ -58,56 +58,96 @@ data analysis and practical technical solutions.
 
 <div class="container">
 
-<h2>What I Do</h2>
+<h2>What I bring to the table</h2>
 
 <div class="cards">
 
 <div class="card">
 <i data-lucide="workflow"></i>
-<h3>Process Improvement</h3>
-<p>Identifying inefficiencies and improving operational processes.</p>
+<h3>Process Optimization</h3>
+
+<ul>
+<li>Making things smoother</li>
+<li>Fixing what shouldn’t be broken</li>
+<li>Noticing inefficiencies early and dealing with them before they turn into real issues</li>
+</ul>
 </div>
 
 <div class="card">
 <i data-lucide="users"></i>
 <h3>Operational and Project Support</h3>
-<p>Supporting legal, sales and marketing teams with data insights.</p>
+
+<ul>
+<li>The person behind the scenes</li>
+<li>Keeping things on track</li>
+<li>Helping different teams stay aligned and move in the same direction</li>
+</ul>
 </div>
 
 <div class="card">
 <i data-lucide="bar-chart-3"></i>
 <h3>Data Analysis</h3>
-<p>Working with structured datasets, SQL queries and analytical workflows.</p>
+
+<ul>
+<li>Data detective</li>
+<li>Asking the right questions</li>
+<li>Turning data into answers</li>
+</ul>
 </div>
 
 <div class="card">
 <i data-lucide="globe-2"></i>
 <h3>Spatial Data and 3D Workflows</h3>
-<p>Experience with GIS, CAD formats, LiDAR datasets and 3D spatial data.</p>
+
+<ul>
+<li>Maps, models and everything in between</li>
+<li>Working with spatial, non spatial and 3D data and keeping all dimensions under control</li>
+<li>Turning data into something you can actually see and explore</li>
+</ul>
 </div>
 
 <div class="card">
 <i data-lucide="rocket"></i>
-<h3>Motivation</h3>
-<p>Proactive mindset and continuous interest in learning new skills.</p>
+<h3>What drives me</h3>
+
+<ul>
+<li>Curious by default</li>
+<li>I don’t get bored easily</li>
+<li>I like exploring things beyond the surface</li>
+</ul>
 </div>
 
 <div class="card">
 <i data-lucide="puzzle"></i>
 <h3>Curiosity and Hobbies</h3>
-<p>Pub quizzes, problem solving and fixing things around the house.</p>
+
+<ul>
+<li>Big fan of pub quizzes, especially the pub part</li>
+<li>Fixing things at home, whether they asked for it or not</li>
+<li>Trying to convince myself to enjoy hiking</li>
+</ul>
 </div>
 
 <div class="card">
 <i data-lucide="compass"></i>
 <h3>Self Taught Problem Solver</h3>
-<p>Developing technical skills through curiosity and exploration.</p>
+
+<ul>
+<li>Figuring things out</li>
+<li>Persistent and keep going even when things get tricky</li>
+<li>Trial, error and AI</li>
+</ul>
 </div>
 
 <div class="card">
 <i data-lucide="languages"></i>
-<h3>Languages</h3>
-<p>Serbian, English and currently learning German.</p>
+<h3>How to talk to me</h3>
+
+<ul>
+<li>Serbian is my native language so no surprises there</li>
+<li>I speak English comfortably and use it daily</li>
+<li>German is work in progress but getting less painful over time</li>
+</ul>
 </div>
 
 </div>
@@ -359,38 +399,36 @@ function slideWidth(){
 return slides[0].offsetWidth + 20;
 }
 
+function visibleSlides(){
+return window.innerWidth <= 768 ? 1 : 3;
+}
+
 function update(){
-
 track.style.transform = `translateX(-${index * slideWidth()}px)`;
-
 left.disabled = index === 0;
-right.disabled = index >= slides.length - 3;
-
+right.disabled = index >= slides.length - visibleSlides();
 }
 
 right.onclick = () => {
-
-if(index < slides.length - 3){
-
+if(index < slides.length - visibleSlides()){
 index++;
-
 update();
-
 }
-
 };
 
 left.onclick = () => {
-
 if(index > 0){
-
 index--;
-
 update();
-
 }
-
 };
+
+window.addEventListener("resize", () => {
+if(index > slides.length - visibleSlides()){
+index = Math.max(0, slides.length - visibleSlides());
+}
+update();
+});
 
 update();
 
