@@ -17,8 +17,6 @@ max-width:1200px;
 margin:auto;
 }
 
-/* NAV */
-
 nav{
 background:#0b1622;
 padding:20px 0;
@@ -50,46 +48,32 @@ text-decoration:none;
 font-weight:500;
 }
 
-/* HERO */
-
 .hero{
 min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
+text-align:center;
 padding:80px 0;
 }
 
 .heroContent{
-max-width:780px;
-margin:0 auto;
+max-width:900px;
 }
 
 .hero h1{
 font-size:56px;
 margin-bottom:28px;
 line-height:1.2;
-text-align:center;
 }
 
 .hero p{
 font-size:20px;
 color:#c9c9c9;
-margin-bottom:18px;
-line-height:1.75;
-
-text-align:justify;
-text-align-last:left;
-
-/* kontrola lomljenja */
-hyphens:none;
-
-/* finije poravnanje */
-word-spacing:0.04em;
-letter-spacing:0.005em;
+max-width:980px;
+margin:0 auto 18px auto;
+text-align: justify;
 }
-
-/* BUTTON */
 
 .button{
 display:inline-block;
@@ -102,13 +86,9 @@ text-decoration:none;
 font-weight:bold;
 }
 
-/* SECTIONS */
-
 .section{
 padding:80px 0;
 }
-
-/* CARDS */
 
 .cards{
 display:grid;
@@ -129,9 +109,6 @@ margin-bottom:15px;
 
 .card p{
 color:#d6d6d6;
-text-align:justify;
-text-align-last:left;
-hyphens:none;
 }
 
 .card ul{
@@ -142,9 +119,6 @@ padding-left:20px;
 .card ul li{
 margin-bottom:8px;
 color:#d6d6d6;
-text-align:justify;
-text-align-last:left;
-hyphens:none;
 }
 
 .card i{
@@ -155,15 +129,11 @@ display:block;
 color:#f2a678;
 }
 
-/* TITLES */
-
 .groupTitle{
 margin:40px 0 20px 0;
 color:#f2a678;
 font-size:24px;
 }
-
-/* SLIDER */
 
 .slider{
 display:flex;
@@ -186,8 +156,6 @@ transition:transform .4s ease;
 flex:0 0 calc((100% - 40px)/3);
 }
 
-/* ARROWS */
-
 .arrow{
 width:32px;
 height:32px;
@@ -208,16 +176,12 @@ opacity:0.35;
 cursor:default;
 }
 
-/* FOOTER */
-
 footer{
 background:#0b1622;
 padding:25px 0;
 text-align:center;
 margin-top:40px;
 }
-
-/* RESPONSIVE */
 
 @media (max-width: 768px){
 
