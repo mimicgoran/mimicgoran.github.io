@@ -59,12 +59,15 @@ nav a:hover{
 color:#f2a678;
 }
 
+/* UPDATED HERO SECTION */
+
 .hero{
 padding:100px 0;
 text-align:center;
 min-height:100vh;
 display:flex;
 align-items:center;
+justify-content:center;
 }
 
 .heroContent{
@@ -88,6 +91,8 @@ margin-right:auto;
 font-size:20px;
 line-height:1.6;
 }
+
+/* REST OSTAO ISTI */
 
 .section{
 padding:80px 0;
